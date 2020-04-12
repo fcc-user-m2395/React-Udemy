@@ -1,5 +1,5 @@
 function getRandom(){
-  let symbols = ['a','b','c'];
+  let symbols = ['🍇', '🍆', '🥔'];
   return symbols[Math.floor(Math.random()*symbols.length)];
 }
 class App extends React.Component {
