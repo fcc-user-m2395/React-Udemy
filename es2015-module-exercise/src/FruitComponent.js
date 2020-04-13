@@ -11,7 +11,7 @@ class FruitComponent extends Component{
    console.log('Here you go:'+fruit);
    console.log('Delicious! May I have another?');
    console.log("I'm sorry, we're all out. We have "+changeFruits.length+' left.');     
-    return <h1>Module Exercise</h1>
+    return <h1>Module Exeercise</h1>
   }
 }
 
