@@ -1,0 +1,18 @@
+.Pokecard {
+  width: calc(84%/4);
+  margin: 2%;
+  border-radius: 5%;
+  background-color: rgb(195, 195, 195);
+}
+
+.Pokecard-name {
+  color: blueviolet;
+}
+
+.Pokecard:hover {
+  transform: scale(1.2, 1.2);
+}
+
+.Pokecard-info {
+  font-weight: 500;
+}
