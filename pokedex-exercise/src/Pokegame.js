@@ -22,7 +22,7 @@ class Pokegame extends Component {
       { id: 25, name: 'Pikachu', type: 'electric', exp: 112 },
       { id: 39, name: 'Jigglypuff', type: 'normal', exp: 95 },
       { id: 94, name: 'Gengar', type: 'poison', exp: 225 },
-      { id: 133, name: 'Eevee', type: 'normal', exp: 65 }
+      { id: 133, name: 'Eevee', type: 'normal', exp: 65, 'JIU-ASDB' }
     ]
   }
   render() {
