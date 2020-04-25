@@ -1,0 +1,40 @@
+/* .Lottery-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+}
+.Lottery-ball {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+.Lottery {
+  border: 2px solid purple;
+  width: 50%;
+  margin: 30px auto;
+  padding: 20px;
+} */
+.Lottery {
+  border: 2px solid gray;
+  width: 50em;
+  margin: 1em auto auto;
+  padding: 1em 0 2em 0;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.Lottery-balls {
+  display: flex;
+  justify-content: center;
+}
+
+.Lottery button {
+  background-color: darkblue;
+  color: white;
+  font-size: 120%;
+  border-radius: 10px;
+  margin-top: 1em;
+}
