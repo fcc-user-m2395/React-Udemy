@@ -1,0 +1,14 @@
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import NumberList from "./NumberList";
+
+function App() {
+  return (
+    <div className='App'>
+      <NumberList />
+    </div>
+  );
+}
+
+export default App;

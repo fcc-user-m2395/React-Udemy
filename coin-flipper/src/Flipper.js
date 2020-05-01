@@ -25,8 +25,6 @@ class Flipper extends Component {
 
   flipCoin() {
     let newFace = choice(this.props.faces);
-    console.log(newFace);
-
     this.setState((currState) => ({
       ...currState,
       totalFlips: currState.totalFlips + 1,

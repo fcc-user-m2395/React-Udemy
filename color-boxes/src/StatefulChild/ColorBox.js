@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import { choice } from "./helpers";
-import "./ColorBox.css";
-import { colorArray } from "./Colors";
+import { choice } from "../helpers";
+import "../ColorBox.css";
+import { colorArray } from "../Colors";
 
 class ColorBox extends Component {
   static defaultProps = {

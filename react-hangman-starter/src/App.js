@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-
 import "./App.css";
-import ColorGrid from "./DumbChild/ColorGrid";
+import Hangman from "./Hangman";
 
 class App extends Component {
   render() {
     return (
-      <div className='App'>
-        <ColorGrid />
+      <div className="App">
+        <Hangman />
       </div>
     );
   }

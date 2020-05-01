@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import "./ColorGrid.css";
-import { colorArray } from "./Colors";
-import { generateRandom } from "./helpers";
+import "../ColorGrid.css";
+import { colorArray } from "../Colors";
+import { generateRandom } from "../helpers";
 import ColorBox from "./ColorBox";
 
 class ColorGrid extends Component {
