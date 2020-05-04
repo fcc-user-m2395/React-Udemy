@@ -50,11 +50,11 @@ class Board1 extends Component {
   createBoard() {
     let board = [];
     let choices = [true, false];
-    let boards = Array.from({ length: this.props.nrows }, (_, i) =>
+    let boards = Array.from({ length: this.props.nrows }, () =>
       Array.from({ length: this.props.ncols })
     );
     board = boards.map((row) =>
-      row.map((column) => choices[Math.floor(Math.random() * 2)])
+      row.map(() => choices[Math.floor(Math.random() * 2)])
     );
 
     // TODO: create array-of-arrays of true/false values

@@ -60,7 +60,7 @@ class TodoList extends Component {
           <TodoForm
             mode={"edit"}
             key={`form-${todo.id}`}
-            edit={this.updateTodo}
+            update={this.updateTodo}
             todo={todo}
           />
         </li>

@@ -12,22 +12,22 @@ class TodoForm extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.mode === "new" ? this.handleAdd() : this.handleEdit();
+    this.props.mode === "new" ? this.handleAdd() : this.handleUpdate();
   }
   handleAdd() {
     let todo = { task: this.state.task };
     this.props.add(todo);
     this.setState({ task: "" });
   }
-  handleEdit() {
+  handleUpdate() {
     let todo = { task: this.state.task, id: this.props.todo.id };
-    this.props.edit(todo);
+    this.props.update(todo);
     this.setState({ task: "" });
   }
 
