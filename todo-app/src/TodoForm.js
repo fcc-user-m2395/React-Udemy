@@ -45,7 +45,7 @@ class TodoForm extends Component {
           name='task'
           value={this.state.task}
           onChange={this.handleChange}
-          placeholder={this.state.mode === "new" ? "New Todo" : ""}
+          placeholder={this.props.mode === "new" ? "New Todo" : ""}
         />
         <button onClick={this.handleSubmit}>{buttonText}</button>
       </form>
