@@ -1,0 +1,13 @@
+.color-boxes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.color-box {
+  height: 100px;
+  width: 100px;
+}
+.colorBox {
+  height: 200px;
+  width: 100%;
+}
