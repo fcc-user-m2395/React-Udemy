@@ -3,6 +3,8 @@ import ColorsGrid from "./ColorsGrid";
 import Navbar from "./Navbar";
 import FormatChangeMessage from "./FormatChangeMessage";
 import Footer from "./Footer";
+import styles from "./styles/PaletteStyles";
+import { withStyles } from "@material-ui/styles";
 
 class Palette extends Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class Palette extends Component {
     this.state = {
       level: 500,
       format: "hex",
-      open: false
+      open: false,
     };
     this.changeLevel = this.changeLevel.bind(this);
     this.changeFormat = this.changeFormat.bind(this);
@@ -27,23 +29,23 @@ class Palette extends Component {
   }
   render() {
     const { level, format, open } = this.state;
-    const { mode } = this.props;
+    const { showingFullPalette, classes } = this.props;
     const { paletteName, emoji, colors, id } = this.props.palette;
     return (
-      <div className='Palette'>
+      <div className={classes.palette}>
         <Navbar
           changeLevel={this.changeLevel}
           level={level}
           handleChange={this.changeFormat}
           format={format}
-          mode={mode}
+          showingFullPalette={showingFullPalette}
         />
         <ColorsGrid
           colors={colors}
           level={level}
           format={format}
           id={id}
-          mode={mode}
+          showingFullPalette={showingFullPalette}
         />
         <FormatChangeMessage
           open={open}
@@ -56,4 +58,4 @@ class Palette extends Component {
   }
 }
 
-export default Palette;
+export default withStyles(styles)(Palette);

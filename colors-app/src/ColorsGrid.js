@@ -1,15 +1,24 @@
 import React, { Component } from "react";
-import ColorBox from "./ColorBox";
 import { Link } from "react-router-dom";
+import { withStyles } from "@material-ui/styles";
+import ColorBox from "./ColorBox";
+import styles from "./styles/ColorsGridStyles";
 
 class ColorsGrid extends Component {
   //colors[],emoji,id,paletteName
   render() {
-    const { id, colors, level, format, mode } = this.props;
+    const {
+      id,
+      colors,
+      level,
+      format,
+      showingFullPalette,
+      classes,
+    } = this.props;
     let grid;
-    if (mode !== "single") {
+    if (showingFullPalette) {
       grid = (
-        <div className='ColorsGrid-colors'>
+        <div className={classes.colorsGridColors}>
           {colors[level].map((color) => (
             <ColorBox
               paletteId={id}
@@ -17,15 +26,14 @@ class ColorsGrid extends Component {
               name={color.name}
               key={color.id}
               id={color.id}
-              mode={mode}
+              showingFullPalette={showingFullPalette}
             />
           ))}
-          ;
         </div>
       );
     } else {
       grid = (
-        <div className='ColorsGrid-colors'>
+        <div className={classes.colorsGridColors}>
           {colors.map((color) => (
             <ColorBox
               paletteId={id}
@@ -33,22 +41,19 @@ class ColorsGrid extends Component {
               name={color.name}
               key={color.name}
               id={color.id}
-              mode={mode}
+              showingFullPalette={showingFullPalette}
             />
           ))}
-          <div
-            className='ColorBox'
-            style={{ background: "black", height: "50%" }}
-          >
-            <Link exact to={`/palette/${id}`} className='back-button'>
-              go-Back
+          <div className={classes.singleColorBox}>
+            <Link to={`/palette/${id}`} className={classes.backButton}>
+              Go Back
             </Link>
           </div>
         </div>
       );
     }
-    return <div className='ColorsGrid'>{grid}</div>;
+    return <div className={classes.colorsGrid}>{grid}</div>;
   }
 }
 
-export default ColorsGrid;
+export default withStyles(styles)(ColorsGrid);
