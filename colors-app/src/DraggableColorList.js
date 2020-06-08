@@ -1,8 +1,8 @@
 import React from "react";
 import { withStyles } from "@material-ui/styles";
 import { SortableContainer } from "react-sortable-hoc";
+//Components :
 import DraggableColorBox from "./DraggableColorBox";
-// import styles from './Styles/DraggableColorListStyles';
 
 const styles = {
   DraggableColorList: {

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 import { withStyles } from "@material-ui/styles";
+//Styles :
 import styles from "./styles/ColorBoxStyles";
 
 class ColorBox extends Component {
@@ -31,20 +33,22 @@ class ColorBox extends Component {
     return (
       <CopyToClipboard text={background} onCopy={this.changeCopyState}>
         <div
-          className={`${classes.colorBox} ${
-            !showingFullPalette && classes.singleColorBox
-          }`}
-          style={{ background }}>
+          className={classNames(classes.colorBox, {
+            [classes.singleColorBox]: !showingFullPalette,
+          })}
+          style={{ background }}
+        >
           <div
-            className={`${classes.copyOverlay} ${
-              copied && classes.showCopyOverlay
-            }`}
+            className={classNames(classes.copyOverlay, {
+              [classes.showCopyOverlay]: copied,
+            })}
             style={{ background }}
           />
           <div
-            className={`${classes.copyMessage} ${
-              copied && classes.showMessage
-            }`}>
+            className={classNames(classes.copyMessage, {
+              [classes.showMessage]: copied,
+            })}
+          >
             <h1>Copied!</h1>
             <p className={classes.copyText}>{background}</p>
           </div>
@@ -57,7 +61,8 @@ class ColorBox extends Component {
           {showingFullPalette && (
             <Link
               to={`/palette/${paletteId}/${id}`}
-              onClick={(e) => e.stopPropagation()}>
+              onClick={(e) => e.stopPropagation()}
+            >
               <span className={classes.seeMore}>More</span>
             </Link>
           )}

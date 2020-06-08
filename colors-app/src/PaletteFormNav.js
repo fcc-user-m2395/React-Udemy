@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import styles from "./styles/PaletteFormNavStyles";
+import { Link } from "react-router-dom";
 import classNames from "classnames";
-import { withStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -9,8 +8,11 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
-import { Link } from "react-router-dom";
+import { withStyles } from "@material-ui/core/styles";
+//Components :
 import PaletteMetaForm from "./PaletteMetaForm";
+//Styles :
+import styles from "./styles/PaletteFormNavStyles";
 
 class PaletteFormNav extends Component {
   constructor(props) {
@@ -43,7 +45,8 @@ class PaletteFormNav extends Component {
           color='default'
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
-          })}>
+          })}
+        >
           <Toolbar disableGutters={!open}>
             <IconButton
               color='inherit'
@@ -51,7 +54,8 @@ class PaletteFormNav extends Component {
               onClick={handleDrawerToggle}
               className={classNames(classes.menuButton, {
                 [classes.hide]: open,
-              })}>
+              })}
+            >
               <AddToPhotosIcon />
             </IconButton>
             <Typography variant='h6' color='inherit' noWrap>
@@ -63,7 +67,8 @@ class PaletteFormNav extends Component {
               <Button
                 variant='contained'
                 className={classes.button}
-                color='secondary'>
+                color='secondary'
+              >
                 GO BACK
               </Button>
             </Link>
@@ -71,7 +76,8 @@ class PaletteFormNav extends Component {
               variant='contained'
               className={classes.button}
               color='primary'
-              onClick={this.toggleForm}>
+              onClick={this.toggleForm}
+            >
               SAVE PALETTE
             </Button>
           </div>

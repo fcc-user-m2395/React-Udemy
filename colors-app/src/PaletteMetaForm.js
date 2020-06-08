@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+import { Picker } from "emoji-mart";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+//Styles :
 import "emoji-mart/css/emoji-mart.css";
-import { Picker } from "emoji-mart";
 
 class PaletteMetaForm extends Component {
   constructor(props) {
@@ -15,11 +16,12 @@ class PaletteMetaForm extends Component {
 
     this.state = {
       newPaletteName: "",
-      emojiPickerOpen: false,
+      stage: "form",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDialogToggle = this.handleDialogToggle.bind(this);
+    this.openPicker = this.openPicker.bind(this);
+    this.closePicker = this.closePicker.bind(this);
   }
 
   componentDidMount() {
@@ -30,8 +32,12 @@ class PaletteMetaForm extends Component {
     );
   }
 
-  handleDialogToggle() {
-    this.setState((st) => ({ emojiPickerOpen: !st.emojiPickerOpen }));
+  openPicker() {
+    this.setState({ stage: "emoji" });
+  }
+
+  closePicker() {
+    this.setState({ stage: "" });
   }
 
   handleChange(evt) {
@@ -50,25 +56,26 @@ class PaletteMetaForm extends Component {
   handleSubmit(emojiObj) {
     const emoji = this.checkFlag(emojiObj);
     this.props.handleSubmit(this.state.newPaletteName, emoji);
-    this.handleDialogToggle();
+    this.closePicker();
   }
 
   render() {
-    const { newPaletteName, emojiPickerOpen } = this.state;
-    const { closeForm, open } = this.props;
+    const { newPaletteName, stage } = this.state;
+    const { closeForm } = this.props;
     return (
       <div>
-        <Dialog open={emojiPickerOpen} onClose={this.handleDialogToggle}>
+        <Dialog open={stage === "emoji"} onClose={this.closePicker}>
           <Picker onSelect={this.handleSubmit} />
         </Dialog>
         <Dialog
-          open={open}
+          open={stage === "form"}
           onClose={closeForm}
-          aria-labelledby='form-dialog-title'>
+          aria-labelledby='form-dialog-title'
+        >
           <DialogTitle id='form-dialog-title'>
             Choose A Palette Name
           </DialogTitle>
-          <ValidatorForm onSubmit={this.handleDialogToggle}>
+          <ValidatorForm onSubmit={this.openPicker}>
             <DialogContent>
               <DialogContentText>
                 Please enter a name for the new Palette.Make Sure its unique!

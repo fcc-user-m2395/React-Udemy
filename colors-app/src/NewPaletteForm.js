@@ -1,17 +1,21 @@
 import React, { Component } from "react";
-import styles from "./styles/NewPaletteFormStyles";
 import classNames from "classnames";
-import { withStyles } from "@material-ui/core/styles";
+import { arrayMove } from "react-sortable-hoc";
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import DraggableColorList from "./DraggableColorList";
-import { arrayMove } from "react-sortable-hoc";
+import { withStyles } from "@material-ui/core/styles";
+//Components :
 import PaletteFormNav from "./PaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
+import DraggableColorList from "./DraggableColorList";
+//Helpers :
+import seedColors from "./helpers/seedColors";
+//Styles :
+import styles from "./styles/NewPaletteFormStyles";
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -23,7 +27,7 @@ class NewPaletteForm extends Component {
 
     this.state = {
       open: true,
-      colors: this.props.palettes[0].colors,
+      colors: seedColors[0].colors,
     };
     this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
@@ -50,11 +54,14 @@ class NewPaletteForm extends Component {
   }
   randomColor() {
     const allColors = this.props.palettes.map((p) => p.colors).flat();
-    const existingColors = this.state.colors.map((color) => color.name);
-    let rand = Math.floor(Math.random() * allColors.length);
-    while (existingColors.indexOf(allColors[rand].name) >= 0) {
+    let rand, randColor, isDuplicateColor;
+    do {
       rand = Math.floor(Math.random() * allColors.length);
-    }
+      randColor = allColors[rand];
+      isDuplicateColor = this.state.colors.some(
+        (color) => color.name === randColor.name
+      );
+    } while (isDuplicateColor);
     this.setState(({ colors }) => ({ colors: [...colors, allColors[rand]] }));
   }
 
@@ -102,7 +109,8 @@ class NewPaletteForm extends Component {
           open={open}
           classes={{
             paper: classes.drawerPaper,
-          }}>
+          }}
+        >
           <div className={classes.drawerHeader}>
             <IconButton onClick={this.handleDrawerToggle}>
               <ChevronLeftIcon />
@@ -118,7 +126,8 @@ class NewPaletteForm extends Component {
                 variant='contained'
                 className={classes.button}
                 color='secondary'
-                onClick={this.componentWillMountclearPalette}>
+                onClick={this.componentWillMountclearPalette}
+              >
                 Clear Palette
               </Button>
               <Button
@@ -126,7 +135,8 @@ class NewPaletteForm extends Component {
                 color='primary'
                 className={classes.button}
                 onClick={this.randomColor}
-                disabled={disabled}>
+                disabled={disabled}
+              >
                 Random Color
               </Button>
             </div>
@@ -140,7 +150,8 @@ class NewPaletteForm extends Component {
         <main
           className={classNames(classes.content, {
             [classes.contentShift]: open,
-          })}>
+          })}
+        >
           <div className={classes.drawerHeader} />
           <div style={{ height: "95%" }}>
             <DraggableColorList

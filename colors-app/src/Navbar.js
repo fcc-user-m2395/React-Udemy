@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import Select from "@material-ui/core/Select";
 import { Link } from "react-router-dom";
 import Slider from "rc-slider";
+import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/styles";
+//Styles :
 import "rc-slider/assets/index.css";
 import styles from "./styles/NavbarStyles";
 

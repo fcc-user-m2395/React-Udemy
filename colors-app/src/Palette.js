@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/styles";
+//Components :
 import ColorsGrid from "./ColorsGrid";
 import Navbar from "./Navbar";
 import FormatChangeMessage from "./FormatChangeMessage";
 import Footer from "./Footer";
+//Styles :
 import styles from "./styles/PaletteStyles";
-import { withStyles } from "@material-ui/styles";
 
 class Palette extends Component {
   constructor(props) {

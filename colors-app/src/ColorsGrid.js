@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/styles";
+//Components:
 import ColorBox from "./ColorBox";
+//Styles :
 import styles from "./styles/ColorsGridStyles";
 
 class ColorsGrid extends Component {
-  //colors[],emoji,id,paletteName
   render() {
     const {
       id,

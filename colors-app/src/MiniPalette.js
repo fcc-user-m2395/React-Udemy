@@ -1,7 +1,8 @@
 import React, { PureComponent } from "react";
-import { withStyles } from "@material-ui/styles";
-import styles from "./styles/MiniPaletteStyles";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { withStyles } from "@material-ui/styles";
+//Styles :
+import styles from "./styles/MiniPaletteStyles";
 
 class MiniPalette extends PureComponent {
   constructor(props) {
@@ -25,7 +26,8 @@ class MiniPalette extends PureComponent {
       <div
         className={classes.miniColorBoxes}
         style={{ backgroundColor: color.color }}
-        key={color.name}></div>
+        key={color.name}
+      ></div>
     ));
     return (
       <div className={classes.root} onClick={this.handleClick}>

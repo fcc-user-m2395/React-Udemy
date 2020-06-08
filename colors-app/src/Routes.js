@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
 import ls from "local-storage";
+import { Route, Switch } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+//Components :
 import PaletteList from "./PaletteList";
 import Palette from "./Palette";
-import palettes from "./seedColors";
-import { generatePalette } from "./color-Helpers";
 import NewPaletteForm from "./NewPaletteForm";
 import Page from "./Page";
+//Helpers :
+import palettes from "./helpers/seedColors";
+import { generatePalette } from "./helpers/color-Helpers";
 
 class Routes extends Component {
   constructor(props) {
